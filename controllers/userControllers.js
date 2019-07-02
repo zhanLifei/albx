@@ -1,5 +1,7 @@
 const express = require('express')
 
+var userModule=require('../Module/userModule.js')
+
 
 module.exports = {
     // 前台页面
@@ -53,4 +55,25 @@ module.exports = {
     showadminusers(req, res){
         res.render('admin/users.ejs')
     },
+
+    // 获取文章列表
+    getlist(req,res){
+
+        var obj= req.query
+
+        userModule.getlist(obj,(err,data)=>{
+            if(err) res.json({
+                "code":201,
+                "msg":"获取失败"
+            })
+            res.json({
+                "code":200,
+                "msg":"获取成功",
+                "data":data
+            })
+        })
+    },
+
+
+
 }

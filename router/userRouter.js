@@ -1,8 +1,8 @@
 // 设置express模块
 const express = require('express')
 
-// 引入module模板
-const userModule = require('./userModule')
+// 引入控制器模板
+const userControllers = require('../controllers/userControllers')
 
 
 // 设置路由实例
@@ -12,13 +12,13 @@ const router = express.Router()
 
     // 前台页面 
 router.get('/', (req, res) => {
-    userModule.showindex(req, res)
+    userControllers.showindex(req, res)
 })
     .get('/list', (req, res) => {
-        userModule.showlist(req, res)
+        userControllers.showlist(req, res)
     })
     .get('/detail', (req, res) => {
-        userModule.showdetail(req, res)
+        userControllers.showdetail(req, res)
         res.render('detail')
     })
 
@@ -27,40 +27,46 @@ router.get('/', (req, res) => {
     /******读取后台页面统一admin后缀********/
 
     .get('/admin', (req, res) => {
-        userModule.showadminindex(req, res)
+        userControllers.showadminindex(req, res)
     })
     .get('/admin/categories', (req, res) => {
-        userModule.showadmincategories(req, res)
+        userControllers.showadmincategories(req, res)
     })
     .get('/admin/comments', (req, res) => {
-        userModule.showadmincomments(req, res)
+        userControllers.showadmincomments(req, res)
     })
     .get('/admin/login', (req, res) => {
-        userModule.showadminlogin(req, res)
+        userControllers.showadminlogin(req, res)
     })
     .get('/admin/nav-menus', (req, res) => {
-        userModule.showadminmenus(req, res)
+        userControllers.showadminmenus(req, res)
     })
     .get('/admin/passwordreset', (req, res) => {
-        userModule.showadminpasswordReset(req, res)
+        userControllers.showadminpasswordReset(req, res)
     })
     .get('/admin/post-add', (req, res) => {
-        userModule.showadminpostDdd(req, res)
+        userControllers.showadminpostDdd(req, res)
     })
     .get('/admin/posts', (req, res) => {
-        userModule.showadminposts(req, res)
+        userControllers.showadminposts(req, res)
     })
     .get('/admin/profile', (req, res) => {
-        userModule.showadminprofile(req, res)
+        userControllers.showadminprofile(req, res)
     })
     .get('/admin/settings', (req, res) => {
-        userModule.showadminsettings(req, res)
+        userControllers.showadminsettings(req, res)
     })
     .get('/admin/slides', (req, res) => {
-        userModule.showadminslides(req, res)
+        userControllers.showadminslides(req, res)
     })
     .get('/admin/users', (req, res) => {
-        userModule.showadminusers(req, res)
+        userControllers.showadminusers(req, res)
+    })
+
+
+    // 获取文章列表
+    .get('/getlist',(req,res)=>{
+        userControllers.getlist(req,res)
     })
     
 
